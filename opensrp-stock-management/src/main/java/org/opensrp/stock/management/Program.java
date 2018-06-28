@@ -2,8 +2,8 @@ package org.opensrp.stock.management;
 
 import java.util.UUID;
 
-public class Program {
-    UUID id;
+public class Program extends BaseEntity {
+
     Code code;
     String name;
     String description;

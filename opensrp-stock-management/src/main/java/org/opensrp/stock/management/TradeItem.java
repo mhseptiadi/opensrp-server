@@ -3,9 +3,8 @@ package org.opensrp.stock.management;
 import java.util.List;
 import java.util.UUID;
 
-public class TradeItem {
+public class TradeItem extends BaseEntity {
 
-    private UUID id;
     private Gtin gtin;
     private String manufacturerOfTradeItem;
     List<TradeItemClassification> classifications;
