@@ -154,6 +154,19 @@ public class LuceneEventRepository extends CouchDbRepositorySupportWithLucene<Ev
 				qf.eq(BASE_ENTITY_ID, eventSearchBean.getBaseEntityId());
 			}
 		}
+
+		if (eventSearchBean.getEventType() != null || !StringUtils.isEmptyOrWhitespaceOnly(eventSearchBean.getEventType())) {
+			if (eventSearchBean.getEventType().contains(",")) {
+				Query q = new Query(FilterType.OR);
+				String[] eventArray = org.apache.commons.lang.StringUtils.split(eventSearchBean.getEventType(), ",");
+				List<String> event_types = new ArrayList<>(Arrays.asList(eventArray));
+				q.inList(EVENT_TYPE, event_types);
+
+				qf.addToQuery(q);
+			} else {
+				qf.eq(EVENT_TYPE, eventSearchBean.getEventType());
+			}
+		}
 		
 		if (StringUtils.isEmptyOrWhitespaceOnly(qf.query())) {
 			throw new RuntimeException("Atleast one search filter must be specified");

@@ -108,7 +108,9 @@ public class AllConstants {
 		public static final String TEAM = "team";
 		
 		public static final String TEAM_ID = "teamId";
-		
+
+		public static final String BIRTH_REGISTRATION = "Birth Registration";
+
 	}
 	
 	public static class Stock {
